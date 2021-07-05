@@ -93,15 +93,15 @@ export default class SnackBar extends Component {
                 bottom: new Animated.Value(-1 * height)
             }, () => {
                 position === 'top' && Animated.sequence([
-                    Animated.timing(this.state.top, {toValue: 0, duration: animationTime}),
+                    Animated.timing(this.state.top, {toValue: 0, duration: animationTime,useNativeDriver: true }),
                     Animated.delay(duration),
-                    Animated.timing(this.state.top, {toValue: -1 * height, duration: animationTime}),
+                    Animated.timing(this.state.top, {toValue: -1 * height, duration: animationTime,useNativeDriver: true }),
                 ]).start();
 
                 position === 'bottom' && Animated.sequence([
-                    Animated.timing(this.state.bottom, {toValue: 0, duration: animationTime}),
+                    Animated.timing(this.state.bottom, {toValue: 0, duration: animationTime,useNativeDriver: true }),
                     Animated.delay(duration),
-                    Animated.timing(this.state.bottom, {toValue: -1 * height, duration: animationTime}),
+                    Animated.timing(this.state.bottom, {toValue: -1 * height, duration: animationTime,useNativeDriver: true }),
                 ]).start();
 
                 this.timeout = setTimeout(() => {
@@ -117,11 +117,11 @@ export default class SnackBar extends Component {
     hideSnackBar = () => {
         let {top, bottom, position, height, animationTime} = this.state;
         position === 'top' && Animated.sequence([
-            Animated.timing(this.state.top, {toValue: -1 * height, duration: animationTime}),
+            Animated.timing(this.state.top, {toValue: -1 * height, duration: animationTime,useNativeDriver: true }),
         ]).start();
 
         position === 'bottom' && Animated.sequence([
-            Animated.timing(this.state.bottom, {toValue: -1 * height, duration: animationTime}),
+            Animated.timing(this.state.bottom, {toValue: -1 * height, duration: animationTime,useNativeDriver: true }),
         ]).start();
     };
 
